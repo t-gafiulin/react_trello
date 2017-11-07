@@ -1,28 +1,83 @@
-.App {
-  text-align: center;
+*,*:before,*:after{
+  box-sizing: border-box
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.App{
+  background: #45B29D;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+.todo{
+  margin: auto;
+  width: 400px;
+}
+
+.add-task{
+  padding: 10px;
+}
+
+.add-task__input{
+  border: none;
+  display: inline-block;
+  border-bottom: 1px solid black;
+  background: none;
+  font-size: 22px;
   color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
+.add-task__input:focus{
+  outline: none;
 }
 
-.App-intro {
-  font-size: large;
+ul{
+  padding: 0;
+  box-shadow: 10px 10px 0 rgba(0,0,0,.2);
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.task-block{
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  
+}
+
+.task-block .fa-trash{
+  /* display: none; */
+  width: 0;
+}
+
+.task-block__task{
+  padding: 10px;
+}
+
+.task-block:hover .fa-trash{
+  width: 50px;
+  background-color: #DF4949;
+  text-align: center;
+  padding-top: 15px;
+  color: white;
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+}
+
+.task-block:hover .fa-trash:hover{
+  background-color: #c0392b;
+}
+
+.even{
+  background-color: white;
+}
+
+.odd{
+  background-color: #f7f7f7;
+}
+
+.even:hover, 
+.odd:hover{
+  background-color: #eee;
 }
