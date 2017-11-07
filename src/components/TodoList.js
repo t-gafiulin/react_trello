@@ -35,12 +35,19 @@ export class TodoList extends Component{
                 {tasks}
             </ul>
         </div>;
+
+        // return <div className='todo'>
+        // <AddTask addTask={this.addTask.bind(this)} />
+        // <ul>
+            
+        // </ul>
+        // </div>;
     }
 }
 
 export default connect (
     state => ({
-        tasks: state
+        tasks: state.tasks
     }),
     dispatch => ({
         addTask: (task) => {
