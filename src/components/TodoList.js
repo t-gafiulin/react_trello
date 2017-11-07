@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AddTask from './AddTask';
 import Task from './Task';
 import { connect } from 'react-redux';
-import { ADD_TASK, DELETE_TASK } from '../constants';
+import { addTask, deleteTask } from '../AC';
 
 
 export class TodoList extends Component{
@@ -50,12 +50,5 @@ export default connect (
     state => ({
         tasks: state.tasks
     }),
-    dispatch => ({
-        addTask: (task) => {
-            dispatch({type: ADD_TASK, payload: task})
-        },
-        deleteTask: (id) => {
-            dispatch({type: DELETE_TASK, payload: {id: id}})
-        }
-    })
+    { addTask, deleteTask}
 )(TodoList);
