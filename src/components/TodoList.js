@@ -36,13 +36,6 @@ export class TodoList extends Component{
                 {tasks}
             </ul>
         </div>;
-
-        // return <div className='todo'>
-        // <AddTask addTask={this.addTask.bind(this)} />
-        // <ul>
-            
-        // </ul>
-        // </div>;
     }
 }
 
