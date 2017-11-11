@@ -13,8 +13,9 @@
 }
 
 .todo{
-  margin: auto;
+  margin: 10px;
   width: 400px;
+  display: inline-block;
 }
 
 .add-task{

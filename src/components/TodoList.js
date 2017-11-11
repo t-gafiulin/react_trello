@@ -15,11 +15,12 @@ export class TodoList extends Component{
         this.props.addTask(newTask);
     }
 
-    deleteTask(index){
-        this.props.deleteTask(index);
+    deleteTask(indexTask){
+        this.props.deleteTask(indexTask);
     }
 
     render(){
+        console.log(this.props.tasks);
         const tasks = this.props.tasks.map((elem, index) => {
             return <Task 
                 deleteTask={this.deleteTask.bind(this)} 
@@ -30,7 +31,7 @@ export class TodoList extends Component{
             />;
         });
 
-        return <div className='todo'>
+        return <div id={this.props.id} className='todo'>
             <AddTask addTask={this.addTask.bind(this)} />
             <ul>
                 {tasks}
@@ -41,7 +42,7 @@ export class TodoList extends Component{
 
 export default connect (
     state => ({
-        tasks: state.tasks
+        tasks: state.tasks.todos
     }),
     { addTask, deleteTask}
 )(TodoList);

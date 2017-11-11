@@ -4,6 +4,6 @@ export function addTask(task) {
     return {type: ADD_TASK, payload: task};
 }
 
-export function deleteTask(id) {
-    return {type: DELETE_TASK, payload: {id: id}};
+export function deleteTask(idTask) {
+    return {type: DELETE_TASK, payload: idTask};
 }

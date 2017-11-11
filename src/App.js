@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import './css/font-awesome.min.css'
-import Todo from './components/TodoList';
+import Todo from './components/Todo';
 
 class App extends Component {
   render() {
