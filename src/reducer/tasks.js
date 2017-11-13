@@ -1,28 +1,26 @@
 import { ADD_TASK, DELETE_TASK } from '../constants';
 
 const initialState = {
-    todos: [
-        // { id: 0, task: '1' },
-        // { id: 1, task: 'q'}
-    ]
+    1: [],
+    2: []
 }
 
 export default function tasks(state = initialState, action){
+    var index = 0;
     switch(action.type){
     case ADD_TASK:
-        const todosLength = state.todos.length;
+        let {task, idTodo} = action.payload;
         return {
             ...state,
-            todos: [
-                ...state.todos,
-                action.payload
-            ]
-        };  
+            [idTodo]: state[idTodo].concat({
+                id: task.id, task: task.task
+            })
+        };   
     case DELETE_TASK:
         return {
-        ...state,
-        todos: state.todos.filter(item => item.id !== action.payload)
-      } 
+            ...state.todos,
+            todos: state.todos.filter(item => item.id !== action.payload.idTask)
+        } 
     default:
         return state;
     }

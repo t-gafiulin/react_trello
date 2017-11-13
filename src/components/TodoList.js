@@ -7,21 +7,31 @@ import { addTask, deleteTask } from '../AC';
 
 export class TodoList extends Component{
 
+    constructor(){
+        super();
+        this.state = {
+            index: 0
+        }
+    }
+
     addTask(task){
         let newTask = {
-            id: this.props.tasks.length,
+            id: this.state.index,
             task: task
         };
-        this.props.addTask(newTask);
+        this.props.addTask(newTask, this.props.id);
+
+        //this.props.addTask(task, this.props.id);
+        this.setState({index: this.state.index + 1});
     }
 
     deleteTask(indexTask){
-        this.props.deleteTask(indexTask);
+        this.props.deleteTask(indexTask, this.props.id);
     }
 
     render(){
-        console.log(this.props.tasks);
-        const tasks = this.props.tasks.map((elem, index) => {
+        console.log(this.props.tasks[this.props.id]);
+        const tasks = this.props.tasks[this.props.id].map((elem, index) => {
             return <Task 
                 deleteTask={this.deleteTask.bind(this)} 
                 task={elem.task} 
@@ -42,7 +52,7 @@ export class TodoList extends Component{
 
 export default connect (
     state => ({
-        tasks: state.tasks.todos
+        tasks: state.tasks
     }),
     { addTask, deleteTask}
 )(TodoList);
