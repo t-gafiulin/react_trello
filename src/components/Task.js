@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 
+const Task = ({addClass, task, deleteTask, index}) => {
 
-
-export default class Task extends Component{
-    render(){
-        return <div className={`task-block ${this.props.addClass}`}>
-            <div className='task-block__task'>{this.props.task}</div>
-            <i className="fa fa-trash" aria-hidden="true" onClick={this.props.deleteTask.bind(null, this.props.index)}></i>
-        </div>;
-    }
+        return (<div className={`task-block ${addClass}`}>
+            <div className='task-block__task'>{task}</div>
+            <i className="fa fa-trash" aria-hidden="true" onClick={deleteTask.bind(null, index)}></i>
+        </div>
+        )
 }
+
+export default Task;
