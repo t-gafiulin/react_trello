@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
 import TodoList from './TodoList';
+import { connect } from 'react-redux';
+import { addBoard } from '../AC/index';
 
-
-export default class Todo extends Component{
-    state = {
-        quantity: 0
-    }
+export class Todo extends Component{
 
     addTodoList(){
-        this.setState({quantity: this.state.quantity + 1});
+        this.props.addBoard(this.props.boards);
     }
 
     render(){
         const todolist = [];
-        for(let i = 0; i < this.state.quantity; i++){
+        for(let i = 0; i < this.props.boards; i++){
             todolist.push(<TodoList id={i} key={i} />);
         }
 
@@ -23,3 +21,10 @@ export default class Todo extends Component{
         </div>;
     }
 }
+
+export default connect (
+    state => ({
+        boards: state.tasks.boards
+    }),
+    { addBoard }
+)(Todo);

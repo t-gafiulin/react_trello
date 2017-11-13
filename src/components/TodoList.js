@@ -7,22 +7,12 @@ import { addTask, deleteTask } from '../AC';
 
 export class TodoList extends Component{
 
-    constructor(){
-        super();
-        this.state = {
-            index: 0
-        }
-    }
-
     addTask(task){
         let newTask = {
-            id: this.state.index,
+            id: this.props.tasks[this.props.id].length,
             task: task
         };
         this.props.addTask(newTask, this.props.id);
-
-        //this.props.addTask(task, this.props.id);
-        this.setState({index: this.state.index + 1});
     }
 
     deleteTask(indexTask){

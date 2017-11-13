@@ -1,10 +1,22 @@
 import { ADD_TASK, DELETE_TASK, ADD_BOARD } from '../constants';
 
 const initialState = {
+    boards: 0
 }
 
 export default function tasks(state = initialState, action){
     switch(action.type){
+        case ADD_BOARD:
+            return {
+                ...state,
+                boards: state.boards + 1,
+                [state.boards]: []
+            }
+        case ADD_BOARD:
+            return {
+                ...state,
+                [action.idBoard]: []
+            }
         case ADD_TASK:
             let {task, idTodo} = action;
             if(state[idTodo] !== undefined){
