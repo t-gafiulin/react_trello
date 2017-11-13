@@ -24,8 +24,8 @@ export default function tasks(state = initialState, action){
         }
     case DELETE_TASK:
         return {
-            // ...state.todos,
-            // [idTodo]: state.filter(item => item.id !== action.payload.idTask)
+            ...state,
+            [action.payload.idTodo]: state[action.payload.idTodo].filter(item => item.id !== action.payload.idTask)
         } 
     default:
         return state;
