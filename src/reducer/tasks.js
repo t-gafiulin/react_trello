@@ -19,21 +19,21 @@ export default function tasks(state = initialState, action){
             }
         case ADD_TASK:
             let {task, idTodo} = action;
-            if(state[idTodo] !== undefined){
+            //if(state[idTodo] !== undefined){
                 return {
                     ...state,
                     [idTodo]: state[idTodo].concat({
                         id: task.id, task: task.task
                     })
                 };   
-            } else {
-                return {
-                    ...state,
-                    [idTodo]: [{
-                        id: task.id, task: task.task
-                    }]
-                };
-            }
+            // } else {
+            //     return {
+            //         ...state,
+            //         [idTodo]: [{
+            //             id: task.id, task: task.task
+            //         }]
+            //     };
+            // }
         case DELETE_TASK:
             return {
                 ...state,
