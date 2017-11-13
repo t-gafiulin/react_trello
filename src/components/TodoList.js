@@ -30,17 +30,18 @@ export class TodoList extends Component{
     }
 
     render(){
-        console.log(this.props.tasks[this.props.id]);
-        const tasks = this.props.tasks[this.props.id].map((elem, index) => {
-            return <Task 
-                deleteTask={this.deleteTask.bind(this)} 
-                task={elem.task} 
-                index={elem.id}
-                key={index}
-                addClass={index % 2 === 1 ? 'odd' : 'even'}    
-            />;
-        });
-
+        let tasks = [];
+        if(this.props.tasks[this.props.id] !== undefined){
+            tasks = this.props.tasks[this.props.id].map((elem, index) => {
+                return <Task 
+                    deleteTask={this.deleteTask.bind(this)} 
+                    task={elem.task} 
+                    index={elem.id}
+                    key={index}
+                    addClass={index % 2 === 1 ? 'odd' : 'even'}    
+                />;
+            });
+        } 
         return <div id={this.props.id} className='todo'>
             <AddTask addTask={this.addTask.bind(this)} />
             <ul>
