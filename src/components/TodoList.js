@@ -32,6 +32,7 @@ export class TodoList extends Component{
                 />;
             });
         } 
+
         return <div id={this.props.id} className='todo'>
             <AddTask addTask={this.addTask.bind(this)} />
             <ul>

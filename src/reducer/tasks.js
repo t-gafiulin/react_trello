@@ -1,7 +1,7 @@
 import { ADD_TASK, DELETE_TASK, ADD_BOARD } from '../constants';
 
 const initialState = {
-    boards: 0
+    boards: []
 }
 
 export default function tasks(state = initialState, action){
@@ -9,8 +9,8 @@ export default function tasks(state = initialState, action){
         case ADD_BOARD:
             return {
                 ...state,
-                boards: state.boards + 1,
-                [state.boards]: []
+                boards: state.boards.concat(state.boards[state.boards.length - 1] + 1 || 0),
+                [state.boards.length]: []
             }
         case ADD_TASK:
             let {task, idTodo} = action;

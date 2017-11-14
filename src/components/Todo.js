@@ -10,10 +10,10 @@ export class Todo extends Component{
     }
 
     render(){
-        const todolist = [];
-        for(let i = 0; i < this.props.boards; i++){
-            todolist.push(<TodoList id={i} key={i} />);
-        }
+        const todolist = this.props.boards.map((elem, index) => {
+            return <TodoList id={elem} key={index} />;
+        })
+
 
         return <div>
             {todolist}
