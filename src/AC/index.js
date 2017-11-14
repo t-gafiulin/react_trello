@@ -1,4 +1,4 @@
-import { ADD_TASK, DELETE_TASK, ADD_BOARD } from '../constants';
+import { ADD_TASK, DELETE_TASK, ADD_BOARD, DELETE_BOARD } from '../constants';
 
 export function addTask(task, idTodo) {
     return { 
@@ -17,6 +17,13 @@ export function deleteTask(idTask, idTodo) {
 export function addBoard(idBoard){
     return { 
         type: ADD_BOARD,
+        idBoard: idBoard
+    }
+}
+
+export function deleteBoard(idBoard) {
+    return {
+        type: DELETE_BOARD,
         idBoard: idBoard
     }
 }
