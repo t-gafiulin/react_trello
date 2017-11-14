@@ -3,7 +3,7 @@ import AddTask from './AddTask';
 import Task from './Task';
 import DeleteBoard from './DeleteBoard';
 import { connect } from 'react-redux';
-import { addTask, deleteTask } from '../AC';
+import { addTask, deleteTask, deleteBoard } from '../AC';
 
 
 export class TodoList extends Component{
@@ -21,7 +21,7 @@ export class TodoList extends Component{
     }
 
     deleteBoard(indexBoard){
-        console.log(indexBoard);
+        this.props.deleteBoard(indexBoard);
     }
 
     render(){
@@ -52,5 +52,5 @@ export default connect (
     state => ({
         tasks: state.tasks
     }),
-    { addTask, deleteTask}
+    { addTask, deleteTask, deleteBoard }
 )(TodoList);

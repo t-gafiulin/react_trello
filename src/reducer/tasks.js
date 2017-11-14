@@ -1,4 +1,4 @@
-import { ADD_TASK, DELETE_TASK, ADD_BOARD } from '../constants';
+import { ADD_TASK, DELETE_TASK, ADD_BOARD, DELETE_BOARD } from '../constants';
 
 const initialState = {
     boards: []
@@ -12,6 +12,14 @@ export default function tasks(state = initialState, action){
                 boards: state.boards.concat(state.boards[state.boards.length - 1] + 1 || 0),
                 [state.boards.length]: []
             }
+        // case DELETE_BOARD:
+        //     //state.filter(item => console.log(item));
+        //     return 
+        //     state.filter(item => console.log(item));
+        //         //state.filter(item => item.id !== action.idBoard)
+        //         //boards: state.boards.filter(item => item !== action.idBoard),
+        //         //state: state.filter(item => item.id !== action.idBoard)
+            
         case ADD_TASK:
             let {task, idTodo} = action;
                 return {
@@ -29,4 +37,3 @@ export default function tasks(state = initialState, action){
             return state;
     }
 }
-
