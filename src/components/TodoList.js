@@ -10,7 +10,7 @@ export class TodoList extends Component{
 
     addTask(task){
         let newTask = {
-            id: this.props.tasks[this.props.id].length,
+            id: this.props.tasks[this.props.id].tasks.length,
             task: task
         };
         this.props.addTask(newTask, this.props.id);
@@ -27,7 +27,7 @@ export class TodoList extends Component{
     render(){
         let tasks = [];
         if(this.props.tasks[this.props.id] !== undefined){
-            tasks = this.props.tasks[this.props.id].map((elem, index) => {
+            tasks = this.props.tasks[this.props.id].tasks.map((elem, index) => {
                 return <Task 
                     deleteTask={this.deleteTask.bind(this)} 
                     task={elem.task} 
@@ -50,7 +50,7 @@ export class TodoList extends Component{
 
 export default connect (
     state => ({
-        tasks: state.tasks
+        tasks: state.tasks.boards
     }),
     { addTask, deleteTask, deleteBoard }
 )(TodoList);

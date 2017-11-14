@@ -6,12 +6,15 @@ import { addBoard } from '../AC/index';
 export class Todo extends Component{
 
     addTodoList(){
-        this.props.addBoard(this.props.boards);
+        // this.props.addBoard(this.props.boards);
+        this.props.addBoard(this.props.boards.boards);
     }
 
     render(){
-        const todolist = this.props.boards.map((elem, index) => {
-            return <TodoList id={elem} key={index} />;
+        console.log(this.props.boards);
+        const todolist = this.props.boards.boards.map((elem, index) => {
+            // return <TodoList id={elem} key={index} />;
+            return <TodoList id={elem.id} key={index} />;
         })
 
 
@@ -24,7 +27,8 @@ export class Todo extends Component{
 
 export default connect (
     state => ({
-        boards: state.tasks.boards
+        //boards: state.tasks.boards
+        boards: state.tasks
     }),
     { addBoard }
 )(Todo);
