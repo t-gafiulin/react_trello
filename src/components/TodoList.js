@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AddTask from './AddTask';
 import Task from './Task';
+import DeleteBoard from './DeleteBoard';
 import { connect } from 'react-redux';
 import { addTask, deleteTask } from '../AC';
 
@@ -19,6 +20,10 @@ export class TodoList extends Component{
         this.props.deleteTask(indexTask, this.props.id);
     }
 
+    deleteBoard(indexBoard){
+        console.log(indexBoard);
+    }
+
     render(){
         let tasks = [];
         if(this.props.tasks[this.props.id] !== undefined){
@@ -34,7 +39,7 @@ export class TodoList extends Component{
         } 
 
         return <div id={this.props.id} className='todo'>
-            
+            <DeleteBoard id={this.props.id} deleteBoard={this.deleteBoard.bind(this)} />
             <AddTask addTask={this.addTask.bind(this)} />
             <ul>
                 {tasks}
