@@ -9,12 +9,11 @@ import { addTask, deleteTask, deleteBoard } from '../AC';
 export class TodoList extends Component{
 
     addTask(task){
-        // let newTask = {
-        //     id: this.props.tasks[this.props.id].tasks.length,
-        //     task: task
-        // };
-        // this.props.addTask(newTask, this.props.id);
-        this.props.addTask(task, this.props.id);
+        let newTask = {
+            id: this.props.tasks[this.props.id].length,
+            task: task
+        };
+        this.props.addTask(newTask, this.props.id);
     }
 
     deleteTask(indexTask){
@@ -27,17 +26,17 @@ export class TodoList extends Component{
 
     render(){
         let tasks = [];
-        //if(this.props.tasks[this.props.id] !== undefined){
-            tasks = this.props.tasks.boards[this.props.id].tasks.map((elem, index) => {
+        if(this.props.tasks[this.props.id] !== undefined){
+            tasks = this.props.tasks[this.props.id].map((elem, index) => {
                 return <Task 
                     deleteTask={this.deleteTask.bind(this)} 
-                    task={elem} 
-                    index={index}
+                    task={elem.task} 
+                    index={elem.id}
                     key={index}
                     addClass={index % 2 === 1 ? 'odd' : 'even'}    
                 />;
             });
-        //} 
+        } 
 
         return <div id={this.props.id} className='todo'>
             <DeleteBoard id={this.props.id} deleteBoard={this.deleteBoard.bind(this)} />

@@ -4,49 +4,13 @@ const initialState = {
     boards: []
 }
 
-// export default function tasks(state = initialState, action){
-//     switch(action.type){
-//         case ADD_BOARD:
-//             return {
-//                 ...state,
-//                 boards: state.boards.concat(state.boards[state.boards.length - 1] + 1 || 0),
-//                 [state.boards.length]: []
-//             }
-//         // case DELETE_BOARD:
-//         //     //state.filter(item => console.log(item));
-//         //     return 
-//         //     state.filter(item => console.log(item));
-//         //         //state.filter(item => item.id !== action.idBoard)
-//         //         //boards: state.boards.filter(item => item !== action.idBoard),
-//         //         //state: state.filter(item => item.id !== action.idBoard)
-            
-//         case ADD_TASK:
-//             let {task, idTodo} = action;
-//                 return {
-//                     ...state,
-//                     [idTodo]: state[idTodo].concat({
-//                         id: task.id, task: task.task
-//                     })
-//                 };   
-//         case DELETE_TASK:
-//             return {
-//                 ...state,
-//                 [action.idTodo]: state[action.idTodo].filter(item => item.id !== action.idTask)
-//             } 
-//         default:
-//             return state;
-//     }
-// }
-
-
 export default function tasks(state = initialState, action){
     switch(action.type){
         case ADD_BOARD:
-            const indexBoard = parseInt(state.boards.length);
             return {
                 ...state,
-                boards: state.boards.concat({id: indexBoard, tasks: []})//,
-                //[state.boards.length]: []
+                boards: state.boards.concat(state.boards[state.boards.length - 1] + 1 || 0),
+                [state.boards.length]: []
             }
         // case DELETE_BOARD:
         //     //state.filter(item => console.log(item));
@@ -58,10 +22,12 @@ export default function tasks(state = initialState, action){
             
         case ADD_TASK:
             let {task, idTodo} = action;
-            //let new_state = state;
-            state.boards[idTodo].tasks.push(task);
-
-            return {...state};
+                return {
+                    ...state,
+                    [idTodo]: state[idTodo].concat({
+                        id: task.id, task: task.task
+                    })
+                };   
         case DELETE_TASK:
             return {
                 ...state,
