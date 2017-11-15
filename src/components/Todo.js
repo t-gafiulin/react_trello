@@ -11,7 +11,6 @@ export class Todo extends Component{
     }
 
     render(){
-        console.log(this.props.boards);
         const todolist = this.props.boards.boards.map((elem, index) => {
             // return <TodoList id={elem} key={index} />;
             return <TodoList id={elem.id} key={index} />;
