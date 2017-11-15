@@ -58,21 +58,10 @@ export default function tasks(state = initialState, action){
             
         case ADD_TASK:
             let {task, idTodo} = action;
-                return {
-                    ...state,
-                    boards: [        
-                        {
-                            ...state.boards,
-                            
-                            ...state.boards[idTodo],
-                            tasks: [
-                                ...state.boards[idTodo].tasks,
-                                task
-                            ]
-                            
-                        }  
-                    ]
-                }
+            //let new_state = state;
+            state.boards[idTodo].tasks.push(task);
+
+            return {...state};
         case DELETE_TASK:
             return {
                 ...state,
