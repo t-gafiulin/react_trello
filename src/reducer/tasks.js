@@ -12,14 +12,11 @@ export default function tasks(state = initialState, action){
                 boards: state.boards.concat(state.boards[state.boards.length - 1] + 1 || 0),
                 [state.boards.length]: []
             }
-        // case DELETE_BOARD:
-        //     //state.filter(item => console.log(item));
-        //     return 
-        //     state.filter(item => console.log(item));
-        //         //state.filter(item => item.id !== action.idBoard)
-        //         //boards: state.boards.filter(item => item !== action.idBoard),
-        //         //state: state.filter(item => item.id !== action.idBoard)
-            
+        case DELETE_BOARD:
+            return {
+                ...state,
+                boards: state.boards.filter(item => item !== action.idBoard)
+            }
         case ADD_TASK:
             let {task, idTodo} = action;
                 return {
